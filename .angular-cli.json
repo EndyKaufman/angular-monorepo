@@ -5,8 +5,8 @@
   },
   "apps": [
     {
-      "root": "src",
-      "outDir": "dist",
+      "root": "app/src",
+      "outDir": "app/dist",
       "assets": [
         "assets",
         "favicon.ico"
@@ -36,11 +36,11 @@
   },
   "lint": [
     {
-      "project": "src/tsconfig.app.json",
+      "project": "app/src/tsconfig.app.json",
       "exclude": "**/node_modules/**"
     },
     {
-      "project": "src/tsconfig.spec.json",
+      "project": "app/src/tsconfig.spec.json",
       "exclude": "**/node_modules/**"
     },
     {

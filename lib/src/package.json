@@ -1,0 +1,10 @@
+{
+    "name": "@lib/test",
+    "peerDependencies": {
+        "@angular/common": "*",
+        "@angular/compiler": "*",
+        "@angular/core": "*",
+        "@angular/forms": "*",
+        "@angular/router": "*"
+    }
+}
