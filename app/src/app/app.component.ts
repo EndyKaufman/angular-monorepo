@@ -1,10 +1,12 @@
 import { Component, Injector } from '@angular/core';
 import { BaseAppComponent, BaseAppService } from '@lib/test';
+import { Router, NavigationEnd } from '@angular/router';
+
+import 'rxjs/add/operator/takeUntil';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  templateUrl: './app.component.html'
 })
 export class AppComponent extends BaseAppComponent {
   title = 'app';
@@ -17,9 +19,17 @@ export class AppComponent extends BaseAppComponent {
   }];
   defaultLang = 'lang';
   public baseAppService: BaseAppService;
-  constructor(injector: Injector) {
+  constructor(
+    public injector: Injector,
+    public router: Router
+  ) {
     super(injector);
     this.baseAppService = injector.get(BaseAppService);
+    router.events.takeUntil(this.destroyed$).subscribe((evt) => {
+      if (evt instanceof NavigationEnd) {
+        document.body.scrollTop = 0;
+      }
+    });
   }
   get newTitle() {
     return this.baseAppService.translatedText();
