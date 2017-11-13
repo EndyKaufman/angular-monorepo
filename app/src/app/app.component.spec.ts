@@ -59,4 +59,16 @@ describe('AppComponent', () => {
       expect(compiled.querySelector('h4').textContent).toContain('Translated text');
     }, 5000);
   }));
+  it('should dynamic render title in a h1, h2, h3, h4 tag', async(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.componentInstance.changeLangToOther();
+    fixture.detectChanges();
+    setTimeout(() => {
+      const compiled = fixture.debugElement.nativeElement;
+      expect(compiled.querySelector('h1').textContent).toContain('Other translated text');
+      expect(compiled.querySelector('h2').textContent).toContain('Other translated text');
+      expect(compiled.querySelector('h3').textContent).toContain('Other translated text');
+      expect(compiled.querySelector('h4').textContent).toContain('Other translated text');
+    }, 5000);
+  }));
 });

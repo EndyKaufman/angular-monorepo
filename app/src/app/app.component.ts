@@ -10,13 +10,16 @@ import 'rxjs/add/operator/takeUntil';
 })
 export class AppComponent extends BaseAppComponent {
   title = 'app';
-  languages = [{
-    code: 'lang',
-    title: 'lang',
-    dic: {
-      'Text to translate': 'Translated text'
+  languages = [
+    ...BaseAppService.langs,
+    {
+      code: 'lang',
+      title: 'lang',
+      dic: {
+        'Text to translate': 'Translated text'
+      }
     }
-  }];
+  ];
   defaultLang = 'lang';
   public baseAppService: BaseAppService;
   constructor(
@@ -39,5 +42,8 @@ export class AppComponent extends BaseAppComponent {
     this.languages.filter(lang => lang.dic).map(lang => this.translateService.setTranslation(lang.code, lang.dic));
     this.translateService.setDefaultLang(this.defaultLang);
     this.translateService.use(this.defaultLang);
+  }
+  changeLangToOther() {
+    this.translateService.use('otherLang');
   }
 }
