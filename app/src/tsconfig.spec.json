@@ -33,7 +33,8 @@
     ]
   },
   "files": [
-    "test.ts"
+    "test.ts",
+    "../../lib/src/index.ts"
   ],
   "include": [
     "**/*.spec.ts",
